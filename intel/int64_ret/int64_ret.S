@@ -3,7 +3,7 @@ global do_exit
 
 section .text
 asm_func:
-        mov rax, 0x158e5
+        mov rax, 9223372036854775808
         ret
 
 do_exit:
