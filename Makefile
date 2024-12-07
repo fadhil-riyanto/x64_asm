@@ -1,5 +1,7 @@
 ASMCC = nasm
+ASMCCFLAGS = -g
 C = gcc
+CFLAGS = -nostdlib -g
 
 all: 8exit.o hello.o 64_intcaller
 	gcc -nostdlib 8exit.o -o 8exit.bin
@@ -14,6 +16,10 @@ hello.o: ./intel/hello.S
 64_intcaller: ./intel/int64_ret/64_intcaller.c 
 	${ASMCC} -felf64 ./intel/int64_ret/int64_ret.S -o int64_ret.o
 	${C} int64_ret.o ./intel/int64_ret/64_intcaller.c -o int64_ret.bin
+
+reg1: ./intel/registers/reg1.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/registers/reg1.S -o reg1.o
+	${C} ${CFLAGS} reg1.o -o reg1.bin
 
 
 clean:
