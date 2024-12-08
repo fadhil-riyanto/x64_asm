@@ -1,5 +1,5 @@
 ASMCC = nasm
-ASMCCFLAGS = -g
+ASMCCFLAGS = -g -O0
 C = gcc
 CFLAGS = -nostdlib -g
 
@@ -20,6 +20,39 @@ hello.o: ./intel/hello.S
 reg1: ./intel/registers/reg1.S
 	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/registers/reg1.S -o reg1.o
 	${C} ${CFLAGS} reg1.o -o reg1.bin
+
+reg2: ./intel/registers/reg2.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/registers/reg2.S -o reg2.o
+	${C} caller.c reg2.o -o reg2.bin
+
+
+reg3: ./intel/registers/reg3.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/registers/reg3.S -o reg3.o
+	${C} caller.c reg3.o -o reg3.bin
+
+add: ./intel/math/add.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/math/add.S -o add.o
+	${C} caller.c add.o -o add.bin
+
+sub: ./intel/math/sub.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/math/sub.S -o sub.o
+	${C} caller.c sub.o -o sub.bin
+
+inc: ./intel/math/inc.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/math/inc.S -o inc.o
+	${C} caller.c inc.o -o inc.bin
+
+inc2: ./intel/math/inc2.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/math/inc2.S -o inc2.o
+	${C} caller.c inc2.o -o inc2.bin
+
+mul: ./intel/math/mul.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/math/mul.S -o mul.o
+	${C} caller.c mul.o -o mul.bin
+
+inv: ./intel/math/inv.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/math/inv.S -o inv.o
+	${C} caller.c inv.o -o inv.bin
 
 
 clean:
