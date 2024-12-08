@@ -6,9 +6,9 @@ extern u_int32_t _asm_func(long a, long b);
 
 int main()
 {
-        u_int32_t ret32 = _asm_func(9, 888);
-        printf("SGN: %" PRId32 "\n", (int32_t)ret32);
-        printf("DEC: %" PRIu32 "\n", (uint32_t)ret32);
+        u_int64_t ret64 = _asm_func(9, 888);
+        printf("SGN: %" PRId64 "\n", (int64_t)ret64);
+        printf("DEC: %" PRIu64 "\n", (uint64_t)ret64);
 
         return 0;
 }
