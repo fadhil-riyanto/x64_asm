@@ -54,6 +54,20 @@ inv: ./intel/math/inv.S
 	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/math/inv.S -o inv.o
 	${C} caller.c inv.o -o inv.bin
 
+j1: ./intel/jump/j1.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/jump/j1.S -o j1.o
+	${C} caller.c j1.o -o j1.bin
+
+j2: ./intel/jump/j2.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/jump/j2.S -o j2.o
+	${C} caller.c j2.o -o j2.bin
+
+cmp: ./intel/flags/cmp.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/flags/cmp.S -o cmp.o
+	${C} caller.c cmp.o -o cmp.bin
+qe: ./intel/flags/qe.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/flags/qe.S -o qe.o
+	${C} caller.c qe.o -o qe.bin
 
 clean:
 	rm *.o
