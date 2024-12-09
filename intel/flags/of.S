@@ -11,9 +11,9 @@ _retok:
         mov rax, 0x1
         ret
 _asm_func:
-        mov eax, 2147483645
-        inc eax
-        inc eax
-        inc eax
+        mov ah, 125
+        inc ah
+        inc ah
+        ; inc ah
         jo _reterr
         jno _retok

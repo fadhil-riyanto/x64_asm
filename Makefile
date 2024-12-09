@@ -69,6 +69,22 @@ qe: ./intel/flags/qe.S
 	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/flags/qe.S -o qe.o
 	${C} caller.c qe.o -o qe.bin
 
+above_below: ./intel/flags/above_below.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/flags/above_below.S -o above_below.o
+	${C} caller.c above_below.o -o above_below.bin
+
+loop: ./intel/flags/loop.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/flags/loop.S -o loop.o
+	${C} caller.c loop.o -o loop.bin
+
+of: ./intel/flags/of.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/flags/of.S -o of.o
+	${C} caller.c of.o -o of.bin
+
+and_or: ./intel/logic/and_or.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/logic/and_or.S -o and_or.o
+	${C} caller.c and_or.o -o and_or.bin
+
 clean:
 	rm *.o
 	rm *.bin
