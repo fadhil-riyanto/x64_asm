@@ -1,7 +1,9 @@
 ASMCC = nasm
+GASASMCC = as
 ASMCCFLAGS = -g -O0
 C = gcc
 CFLAGS = -nostdlib -g
+GASASMCCFLAGS = ${ASMCCFLAGS}
 
 all: 8exit.o hello.o 64_intcaller
 	gcc -nostdlib 8exit.o -o 8exit.bin
@@ -81,10 +83,18 @@ of: ./intel/flags/of.S
 	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/flags/of.S -o of.o
 	${C} caller.c of.o -o of.bin
 
+shift: ./intel/flags/shift.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/flags/shift.S -o shift.o
+	${C} caller.c shift.o -o shift.bin
+
 and_or: ./intel/logic/and_or.S
 	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/logic/and_or.S -o and_or.o
 	${C} caller.c and_or.o -o and_or.bin
 
+simple_print: ./gnu_as/addressing/simple_print.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/simple_print.S -o simple_print.o
+	${C} -g -fPIC caller.c simple_print.o -o simple_print.bin
+
 clean:
 	rm *.o
-	rm *.bin
+	rm *.bin 
