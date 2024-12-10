@@ -95,6 +95,14 @@ simple_print: ./gnu_as/addressing/simple_print.S
 	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/simple_print.S -o simple_print.o
 	${C} -g -fPIC caller.c simple_print.o -o simple_print.bin
 
+types: ./gnu_as/addressing/types.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/types.S -o types.o
+	${C} -g -fPIC caller.c types.o -o types.bin
+
+types2: ./gnu_as/addressing/types2.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/types2.S -o types2.o
+	${C} -g -fPIC caller.c types2.o -o types2.bin
+
 clean:
 	rm *.o
 	rm *.bin 
