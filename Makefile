@@ -103,6 +103,14 @@ types2: ./gnu_as/addressing/types2.S
 	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/types2.S -o types2.o
 	${C} -g -fPIC caller.c types2.o -o types2.bin
 
+arraccess: ./gnu_as/addressing/arraccess.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/arraccess.S -o arraccess.o
+	${C} -g -fPIC caller.c arraccess.o -o arraccess.bin
+
+counter1: ./gnu_as/addressing/counter1.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/counter1.S -o counter1.o
+	${C} -g -fPIC caller.c counter1.o -o counter1.bin
+
 clean:
 	rm *.o
 	rm *.bin 
