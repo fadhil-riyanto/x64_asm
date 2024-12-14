@@ -115,7 +115,13 @@ packed: ./gnu_as/addressing/packed.S
 	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/packed.S -o packed.o
 	${C} -g -fPIC caller.c packed.o -o packed.bin
 
-	
+packed_rbx: ./gnu_as/addressing/packed_rbx.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/packed_rbx.S -o packed_rbx.o
+	${C} -g -fPIC caller.c packed_rbx.o -o packed_rbx.bin
+
+intel_addr: ./intel/addressing/intel_addr.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/addressing/intel_addr.S -o intel_addr.o
+	${C} caller.c intel_addr.o -o intel_addr.bin
 
 clean:
 	rm *.o
