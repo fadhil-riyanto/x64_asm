@@ -111,6 +111,12 @@ counter1: ./gnu_as/addressing/counter1.S
 	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/counter1.S -o counter1.o
 	${C} -g -fPIC caller.c counter1.o -o counter1.bin
 
+packed: ./gnu_as/addressing/packed.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/packed.S -o packed.o
+	${C} -g -fPIC caller.c packed.o -o packed.bin
+
+	
+
 clean:
 	rm *.o
 	rm *.bin 
