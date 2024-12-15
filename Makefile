@@ -135,6 +135,10 @@ bssintel: ./intel/addressing/bssintel.S
 	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/addressing/bssintel.S -o bssintel.o
 	ld bssintel.o -o bssintel.bin
 
+var_bss: ./gnu_as/addressing/var_bss.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/var_bss.S -o var_bss.o
+	ld var_bss.o -o var_bss.bin
+
 clean:
 	rm *.o
 	rm *.bin 
