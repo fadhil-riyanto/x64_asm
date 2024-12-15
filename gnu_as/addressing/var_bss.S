@@ -9,6 +9,10 @@ _start:
         leaq global_var(%rip), %rdx
         movl $0xC, (%rdx)
 
+        incq (%rdx)
+        incq (%rdx)
+        incq (%rdx)
+
         // fetch
         movq (%rdx), %r10
 
