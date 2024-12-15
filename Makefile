@@ -123,6 +123,18 @@ intel_addr: ./intel/addressing/intel_addr.S
 	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/addressing/intel_addr.S -o intel_addr.o
 	${C} caller.c intel_addr.o -o intel_addr.bin
 
+bss: ./gnu_as/addressing/bss.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/bss.S -o bss.o
+	ld bss.o -o bss.bin
+
+bss2: ./gnu_as/addressing/bss2.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/bss2.S -o bss2.o
+	ld bss2.o -o bss2.bin
+
+bssintel: ./intel/addressing/bssintel.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/addressing/bssintel.S -o bssintel.o
+	ld bssintel.o -o bssintel.bin
+
 clean:
 	rm *.o
 	rm *.bin 
