@@ -139,6 +139,30 @@ var_bss: ./gnu_as/addressing/var_bss.S
 	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/var_bss.S -o var_bss.o
 	ld var_bss.o -o var_bss.bin
 
+array: ./gnu_as/addressing/array.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/array.S -o array.o
+	${C} -g -fPIC caller.c array.o -o array.bin
+
+arrayintel: ./intel/addressing/arrayintel.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/addressing/arrayintel.S -o arrayintel.o
+	${C} -g -fPIC caller.c arrayintel.o -o arrayintel.bin
+
+add1: ./gnu_as/addressing/add1.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/add1.S -o add1.o
+	${C} -g -fPIC caller.c add1.o -o add1.bin
+
+pop_push: ./gnu_as/addressing/pop_push.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/pop_push.S -o pop_push.o
+	${C} -g -fPIC caller.c pop_push.o -o pop_push.bin
+
+pop_push2: ./gnu_as/addressing/pop_push2.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/pop_push2.S -o pop_push2.o -g
+	${C} -g -fPIC caller.c pop_push2.o -o pop_push2.bin -g
+
+pop_push_intel: ./intel/addressing/pop_push_intel.S
+	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/addressing/pop_push_intel.S -o pop_push_intel.o
+	${C} -g -fPIC caller.c pop_push_intel.o -o pop_push_intel.bin
+
 clean:
 	rm *.o
 	rm *.bin 
