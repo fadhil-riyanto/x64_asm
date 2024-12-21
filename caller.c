@@ -6,6 +6,7 @@ extern u_int64_t _asm_func();
 
 int main()
 {
+        int bbb = 283;
         u_int64_t ret64 = _asm_func();
         printf("SGN: %" PRId64 "\n", (int64_t)ret64);
         printf("DEC: %" PRIu64 "\n", (uint64_t)ret64);
