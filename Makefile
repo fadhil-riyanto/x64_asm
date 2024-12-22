@@ -163,6 +163,18 @@ pop_push_intel: ./intel/addressing/pop_push_intel.S
 	${ASMCC} ${ASMCCFLAGS} -felf64 ./intel/addressing/pop_push_intel.S -o pop_push_intel.o
 	${C} -g -fPIC caller.c pop_push_intel.o -o pop_push_intel.bin
 
+sp1: ./gnu_as/addressing/sp1.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/addressing/sp1.S -o sp1.o -g
+	${C} -g -fPIC caller.c sp1.o -o sp1.bin -g
+
+call1: ./gnu_as/call/call1.S
+	${GASASMCC} ${GASASMCCFLAGS} ./gnu_as/call/call1.S -o call1.o -g
+	${C} -g -fPIC caller.c call1.o -o call1.bin -g
+
+test1: ./gnu_as/spec/test.S
+	${GASASMCC} -c ./gnu_as/spec/test.S -o test.o -g
+	ld test.o -o test.bin 
+
 clean:
 	rm *.o
 	rm *.bin 
